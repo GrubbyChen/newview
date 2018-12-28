@@ -1,0 +1,154 @@
+.v-toolbar {
+  position: absolute;
+  z-index: 1;
+  box-shadow: none;
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  .headline {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+}
+
+// 菜单
+.nv-menus {
+  li {
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.1em;
+    word-spacing: normal;
+    vertical-align: top;
+    transition: 0.5s;
+    a {
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-weight: normal;
+      &:hover,
+      &.active {
+        &:before {
+          visibility: visible;
+          transform: scaleX(1);
+        }
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        right: -5px;
+        bottom: -4px;
+        left: -5px;
+        visibility: hidden;
+        border-bottom: 2px solid #fff;
+        transform: scaleX(0);
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+// 菜单高亮样式
+.nv-app-home .nv-menus li a[href='/'],
+.nv-app-works .nv-menus li a[href*='works'],
+.nv-app-agent .nv-menus li a[href*='agent'],
+.nv-app-company .nv-menus li a[href*='company'],
+.nv-app-contact .nv-menus li a[href*='contact'],
+.nv-app-about .nv-menus li a[href*='contact'] {
+  font-weight: 600;
+  &:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}
+
+// 首页 - title
+.nv-home-title {
+  position: relative;
+  letter-spacing: 6px;
+  font-size: 24px;
+  font-weight: bold;
+  &:before {
+    content: '';
+    position: absolute;
+    right: -5px;
+    bottom: -4px;
+    left: -5px;
+    border-bottom: 3px solid #000;
+  }
+}
+
+// 首页 - works
+.nv-works-item {
+  .v-image{
+    cursor: pointer;
+    &:hover .v-image__image {
+      transform: scale(1.1);
+    }
+  }
+  .v-image__image {
+    transition: transform 0.5s;
+  }
+  .v-card__title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+// 页面上的操作按钮
+.nv-page-button {
+  display: block;
+  height: 56px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #000;
+  color: #000;
+  border-radius: 3px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 54px;
+  text-align: center;
+  width: 352px;
+  transition: 0.5s;
+  &:hover {
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+  }
+}
+
+.nv-home {
+  .v-image__image {
+    // position: relative;
+    // height: auto;
+  }
+}
+
+.nv-works {
+  .nv-works-tabs {
+    margin-top: 48px;
+    margin-bottom: 16px;
+    .v-tabs__slider {
+      height: 3px;
+    }
+    .v-tabs__item {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      color: #000;
+      .v-icon {
+        color: #000;
+      }
+    }
+    .v-tabs__container--icons-and-text {
+      height: 80px;
+    }
+    .v-tabs__container--icons-and-text .v-tabs__item .v-icon {
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.image-pre-dialog {
+  box-shadow: none;
+  &.v-dialog:not(.v-dialog--fullscreen) {
+    max-height: 96%;
+  }
+}
