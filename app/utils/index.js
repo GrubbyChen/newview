@@ -42,13 +42,13 @@ module.exports = {
         port: 465, // SMTP 端口
         secureConnection: true, // 使用了 SSL
         auth: {
-          user: '871778500@qq.com',
+          user: '390539201@qq.com',
           // 这里密码不是qq密码，是你设置的smtp授权码
           pass: 'vqdzyrgyjtzxbibg'
         }
       })
       let mailOptions = {
-        from: '"newview" <871778500@qq.com>', // sender address
+        from: '"newview" <390539201@qq.com>', // sender address
         to: 'ko@newview.co.jp', // list of receivers
         subject: 'Hello', // Subject line
         // 发送text或者html格式
