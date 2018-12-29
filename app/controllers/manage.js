@@ -57,7 +57,7 @@ module.exports = {
       fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
 
       await _saveFile(file, fileName, 'carousel') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.host}/carousel/${fileName}` // 文件路径
+      const filePath = `${ctx.protocol}://${ctx.hostname}:2080/carousel/${fileName}` // 文件路径
       const fileData = await new CarouselModel({ fileName, filePath }).save() // 保存文件到数据库
 
       ctx.body = {
