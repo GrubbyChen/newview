@@ -45,7 +45,7 @@
               v-for="(item, index) in videos" :key="index"
               xs12 md4 px-4 py-5 class="nv-works-item">
               <v-card class="elevation-0 transparent">
-                <video :src="item.filePath" controls style="width: 344px;">
+                <video :src="item.distPath" controls style="width: 344px;">
                   您的浏览器不支持 video 标签。
                 </video>
                 <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>

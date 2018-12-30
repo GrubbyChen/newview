@@ -6,7 +6,7 @@
       xs12 md4 px-4 py-4 class="nv-works-item"
     >
       <v-card class="elevation-0 transparent">
-        <v-img :src="item.filePath" height="194px" @click="previewImage(index)"></v-img>
+        <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
         <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
       </v-card>
     </v-flex>
@@ -32,8 +32,8 @@ export default {
     }
   },
   methods: {
-    previewImage (index) {
-      this.previewSrc = this.imgs[index].src
+    previewImage (distPath) {
+      this.previewSrc = distPath
       this.dialog = true
     }
   },

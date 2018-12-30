@@ -4,7 +4,7 @@
       <v-carousel-item
         v-for="(item, index) in carousels"
         :key="index"
-        :src="item.filePath"
+        :src="item.distPath"
       ></v-carousel-item>
     </v-carousel>
     <section class="nv-home-works my-5">
@@ -23,7 +23,7 @@
                 v-for="(item, index) in images" :key="index"
                 xs12 md4 px-4 py-5 class="nv-works-item">
                 <v-card class="elevation-0 transparent">
-                  <v-img :src="item.filePath" height="194px"></v-img>
+                  <v-img :src="item.distPath" height="194px"></v-img>
                   <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
                 </v-card>
               </v-flex>

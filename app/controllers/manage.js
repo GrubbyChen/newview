@@ -6,30 +6,6 @@ const CarouselModel = require('../models/carousel')
 const ImageModel = require('../models/image')
 const VideoModel = require('../models/video')
 
-/**
- * @desc 保存文件到指定目录
- * @author chenguanbin
- * @param {Object} file 上传的文件对象
- * @param {String} type 类型
- * @return {Object} 返回文件名称和文件路径
- */
-const _saveFile = async (file, fileName, type) => {
-  try {
-    const { path: upPath } = file
-    const reader = fs.createReadStream(upPath) // 创建可读流
-    const folderPath = `${path.join(__dirname, '../../public/')}/${type}` // 文件夹路径
-
-    // 若文件夹不存在，就创建一个
-    if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath)
-    const filePath = `${folderPath}/${fileName}` // 文件路径
-
-    const fileStream = fs.createWriteStream(filePath) // 创建可写流
-    reader.pipe(fileStream) // 可读流通过管道写入可写流
-  } catch (err) {
-    throw (err)
-  }
-}
-
 module.exports = {
   fetchCarousel: async (ctx, next) => {
     try {
@@ -49,20 +25,9 @@ module.exports = {
 
   uploadCarousel: async (ctx, next) => {
     try {
-      let {
-        files: { file },
-        files: { file: { name: fileName } }
-      } = ctx.request
-
-      fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-
-      await _saveFile(file, fileName, 'carousel') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.hostname}:2080/carousel/${fileName}` // 文件路径
-      const fileData = await new CarouselModel({ fileName, filePath }).save() // 保存文件到数据库
-
       ctx.body = {
         code: '0',
-        data: fileData
+        data: await new CarouselModel(await _upload(ctx, 'carousel')).save()
       }
       next()
     } catch (err) {
@@ -77,22 +42,10 @@ module.exports = {
   reuploadCarousel: async (ctx, next) => {
     try {
       const { id } = ctx.request.body
-      const publicPath = path.join(__dirname, '../../public')
-      const _file = await CarouselModel.findById(id)
-      fs.unlinkSync(`${publicPath}/carousel/${_file.fileName}`)
-
-      let {
-        files: { file },
-        files: { file: { name: fileName } }
-      } = ctx.request
-
-      fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-      await _saveFile(file, fileName, 'carousel') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.host}/carousel/${fileName}` // 文件路径
 
       ctx.body = {
         code: '0',
-        data: await CarouselModel.findByIdAndUpdate(id, { fileName, filePath })
+        data: await CarouselModel.findByIdAndUpdate(id, await _reupload(ctx, 'carousel'))
       }
       next()
     } catch (err) {
@@ -107,10 +60,9 @@ module.exports = {
   removeCarousel: async (ctx, next) => {
     try {
       const { id } = ctx.request.body
-      const publicPath = path.join(__dirname, '../../public')
       const file = await CarouselModel.findById(id)
       // 移除目标文件
-      fs.unlinkSync(`${publicPath}/carousel/${file.fileName}`)
+      _remove(file.fileName, 'carousel')
       await CarouselModel.remove(file)
 
       ctx.body = {
@@ -144,20 +96,9 @@ module.exports = {
 
   uploadImage: async (ctx, next) => {
     try {
-      let {
-        files: { file },
-        files: { file: { name: fileName } }
-      } = ctx.request
-
-      fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-
-      await _saveFile(file, fileName, 'works-image') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.host}/works-image/${fileName}` // 文件路径
-      const fileData = await new ImageModel({ fileName, filePath }).save() // 保存文件到数据库
-
       ctx.body = {
         code: '0',
-        data: fileData
+        data: await new ImageModel(await _upload(ctx, 'works-image')).save()
       }
       next()
     } catch (err) {
@@ -172,22 +113,9 @@ module.exports = {
   reuploadImage: async (ctx, next) => {
     try {
       const { id } = ctx.request.body
-      const publicPath = path.join(__dirname, '../../public')
-      const _file = await ImageModel.findById(id)
-      fs.unlinkSync(`${publicPath}/works-image/${_file.fileName}`)
-
-      let {
-        files: { file },
-        files: { file: { name: fileName } }
-      } = ctx.request
-
-      fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-      await _saveFile(file, fileName, '/works-image') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.host}/works-image/${fileName}` // 文件路径
-
       ctx.body = {
         code: '0',
-        data: await ImageModel.findByIdAndUpdate(id, { fileName, filePath })
+        data: await ImageModel.findByIdAndUpdate(id, await _reupload(ctx, 'works-image'))
       }
       next()
     } catch (err) {
@@ -220,10 +148,9 @@ module.exports = {
   removeImage: async (ctx, next) => {
     try {
       const { id } = ctx.request.body
-      const publicPath = path.join(__dirname, '../../public')
       const file = await ImageModel.findById(id)
       // 移除目标文件
-      fs.unlinkSync(`${publicPath}/works-image/${file.fileName}`)
+      _remove(file.fileName, 'works-image')
       await ImageModel.remove(file)
 
       ctx.body = {
@@ -257,20 +184,9 @@ module.exports = {
 
   uploadVideo: async (ctx, next) => {
     try {
-      let {
-        files: { file },
-        files: { file: { name: fileName } }
-      } = ctx.request
-
-      fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-
-      await _saveFile(file, fileName, 'works-video') // 保存文件到本地项目
-      const filePath = `${ctx.protocol}://${ctx.host}/works-video/${fileName}` // 文件路径
-      const fileData = await new VideoModel({ fileName, filePath }).save() // 保存文件到数据库
-
       ctx.body = {
         code: '0',
-        data: fileData
+        data: await new VideoModel(await _upload(ctx, 'works-video')).save()
       }
       next()
     } catch (err) {
@@ -303,10 +219,9 @@ module.exports = {
   removeVideo: async (ctx, next) => {
     try {
       const { id } = ctx.request.body
-      const publicPath = path.join(__dirname, '../../public')
       const file = await VideoModel.findById(id)
       // 移除目标文件
-      fs.unlinkSync(`${publicPath}/works-video/${file.fileName}`)
+      _remove(file.fileName, 'works-video')
       await VideoModel.remove(file)
 
       ctx.body = {
@@ -320,5 +235,91 @@ module.exports = {
         msg: '系统错误'
       }
     }
+  }
+}
+
+const _upload = async (ctx, type) => {
+  try {
+    let {
+      files: { file },
+      files: { file: { name: fileName } }
+    } = ctx.request
+
+    fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
+
+    await _saveFile2Local(file, fileName, type) // 保存文件到本地项目
+    const filePath = `${ctx.protocol}://${ctx.hostname}:2080/upload/${type}/${fileName}` // 文件路径
+    const distPath = `${ctx.protocol}://${ctx.hostname}/upload/${type}/${fileName}` // 文件路径
+
+    return { fileName, filePath, distPath }
+  } catch (err) {
+    throw (err)
+  }
+}
+
+const _reupload = async (ctx, type) => {
+  try {
+    const { id } = ctx.request.body
+    const _file = await CarouselModel.findById(id)
+    fs.unlinkSync(path.join(__dirname, `../../public/upload/${type}/`) + _file.fileName)
+    fs.unlinkSync(path.join(__dirname, `../../dist/upload/${type}/`) + _file.fileName)
+
+    let {
+      files: { file },
+      files: { file: { name: fileName } }
+    } = ctx.request
+
+    fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
+    await _saveFile2Local(file, fileName, type) // 保存文件到本地项目
+    const filePath = `${ctx.protocol}://${ctx.hostname}:2080/upload/${type}/${fileName}` // 文件路径
+    const distPath = `${ctx.protocol}://${ctx.hostname}/upload/${type}/${fileName}` // 文件路径
+
+    return { fileName, filePath, distPath }
+  } catch (err) {
+    throw (err)
+  }
+}
+
+const _remove = async (fileName, type) => {
+  try {
+    // 移除目标文件
+    fs.unlinkSync(path.join(__dirname, `../../public/upload/${type}/`) + fileName)
+    fs.unlinkSync(path.join(__dirname, `../../dist/upload/${type}/`) + fileName)
+  } catch (err) {
+    throw (err)
+  }
+}
+
+/**
+ * @desc 保存文件到指定目录
+ * @author chenguanbin
+ * @param {Object} file 上传的文件对象
+ * @param {String} type 类型
+ * @return {Object} 返回文件名称和文件路径
+ */
+const _saveFile2Local = async (file, fileName, type) => {
+  try {
+    const { path: upPath } = file
+
+    const uploadPath1 = path.join(__dirname, '../../public/upload')
+    const uploadPath2 = path.join(__dirname, '../../dist/upload')
+    if (!fs.existsSync(uploadPath1)) fs.mkdirSync(uploadPath1)
+    if (!fs.existsSync(uploadPath2)) fs.mkdirSync(uploadPath2)
+
+    const folderPath1 = `${uploadPath1}/${type}`
+    const folderPath2 = `${uploadPath2}/${type}`
+    const filePath1 = `${folderPath1}/${fileName}`
+    const filePath2 = `${folderPath2}/${fileName}`
+    if (!fs.existsSync(folderPath1)) fs.mkdirSync(folderPath1)
+    if (!fs.existsSync(folderPath2)) fs.mkdirSync(folderPath2)
+
+    // 写入文件
+    const reader = fs.createReadStream(upPath) // 创建可读流
+    const fileStream1 = fs.createWriteStream(filePath1) // 创建可写流
+    const fileStream2 = fs.createWriteStream(filePath2) // 创建可写流
+    reader.pipe(fileStream1) // 可读流通过管道写入可写流
+    reader.pipe(fileStream2) // 可读流通过管道写入可写流
+  } catch (err) {
+    throw (err)
   }
 }

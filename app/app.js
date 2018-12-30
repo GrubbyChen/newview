@@ -19,7 +19,7 @@ app.use(require('koa-body')({
 }))
 app.use(require('koa-json')())
 app.use(require('koa-logger')())
-app.use(require('koa-static')(path.join(__dirname, '../public')))
+app.use(require('koa-static')(path.join(__dirname, '../dist')))
 // app.use(session({
 //   maxAge: 86400000
 // }, app))
