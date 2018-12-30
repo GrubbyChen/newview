@@ -31,7 +31,7 @@
           </v-container>
         </v-flex>
         <v-flex xs12 sm4 class="mt-5 mb-4">
-          <a class="nv-page-button" href="/nvworks/">もっと詳しくみる</a>
+          <a class="nv-page-button" @click="$router.push('/nvworks')">もっと詳しくみる</a>
         </v-flex>
       </v-layout>
     </section>

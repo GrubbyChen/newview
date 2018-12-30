@@ -10,7 +10,7 @@
           v-for="(item, index) in menus"
           :key="index"
         >
-          <a :href="item.url">{{ item.name }}</a>
+          <a :class="{ 'active': activedMenu === item.name }" @click="handleClickMenu(item)">{{ item.name }}</a>
         </li>
       </ul>
     </v-toolbar>
@@ -27,7 +27,7 @@
           color="white"
           flat
           round
-          @click="gotoRouter(item.url)"
+          @click="$router.push(item.router)"
         >
           {{ item.name }}
         </v-btn>
@@ -56,10 +56,10 @@ export default {
     return {
       menus: [{
         name: 'HOME',
-        url: '/'
+        router: '/'
       }, {
         name: 'WORKS',
-        url: '/nvworks/'
+        router: '/nvworks'
       },
       // {
       //   name: 'AGENT',
@@ -67,23 +67,27 @@ export default {
       // },
       {
         name: 'COMPANY',
-        url: '/company/'
+        router: '/company'
       },
       {
         name: 'CONTACT',
-        url: '/contact/'
+        router: '/contact'
       }],
       activedMenu: 'home'
     }
   },
   methods: {
+    handleClickMenu (item) {
+      this.activedMenu = item.name
+      this.$router.push(item.router)
+    },
     gotoRouter (url) {
       location.href = url
     }
   },
   mounted () {
     for (let item of this.menus) {
-      if (location.pathname === item.url) this.activedMenu = item.name.toLocaleLowerCase()
+      if (location.pathname === item.router) this.activedMenu = item.name
     }
   }
 }
