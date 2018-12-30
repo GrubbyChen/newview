@@ -14,7 +14,7 @@
         align-center
       >
         <v-flex xs12 sm4 class="mt-5 mb-4">
-          <div class="nv-home-title">WORKS</div>
+          <div class="nv-title">WORKS</div>
         </v-flex>
         <v-flex xs12 style="width: 1200px;">
           <v-container grid-list-xl>
@@ -54,7 +54,7 @@
         align-center
       >
         <v-flex xs12 sm4 class="mt-5 mb-4">
-          <div class="nv-home-title">AGENT</div>
+          <div class="nv-title">COMPANY</div>
         </v-flex>
         <v-flex xs12>
           <v-container grid-list-xl>
@@ -123,7 +123,7 @@
           <v-flex xs12 sm4>
             <v-card class="elevation-0 transparent">
               <v-card-title primary-title class="layout justify-center">
-                <div class="nv-home-title my-3">CONTACT</div>
+                <div class="nv-title my-3">CONTACT</div>
               </v-card-title>
               <v-card-text>
                 Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
@@ -155,6 +155,9 @@
                 </v-list-tile>
               </v-list>
             </v-card>
+          </v-flex>
+          <v-flex xs12 sm4 class="mt-5 mb-4">
+            <a class="nv-page-button" href="/contact/">もっと詳しくみる</a>
           </v-flex>
         </v-layout>
       </v-container>

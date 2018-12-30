@@ -49,7 +49,8 @@ module.exports = {
       })
       let mailOptions = {
         from: '"newview" <390539201@qq.com>', // sender address
-        to: 'ko@newview.co.jp', // list of receivers
+        // to: 'ko@newview.co.jp', // list of receivers
+        to: '15858257625@163.com', // list of receivers
         subject: 'Hello', // Subject line
         // 发送text或者html格式
         // text: 'Hello world?', // plain text body

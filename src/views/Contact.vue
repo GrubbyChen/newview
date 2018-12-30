@@ -10,53 +10,15 @@
     <section class="py-4">
       <v-layout column wrap align-center>
         <v-flex xs12 sm4 my-5>
-          <div class="nv-title">COMPANY</div>
-        </v-flex>
-        <v-flex mt-3 mb-5 style="width: 1200px;">
-          <v-layout row wrap>
-            <v-flex md6 class="px-4">
-              <v-img src="../aboutus/02.jpg" width="100%"></v-img>
-            </v-flex>
-            <v-flex md6 class="px-4">
-              <p>这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介</p>
-              <p>这是一条公司简介</p>
-              <p>这是一条公司简介</p>
-            </v-flex>
-          </v-layout>
-        </v-flex>
-      </v-layout>
-    </section>
-    <section class="py-4" style="background: #fafafa;">
-      <v-layout column wrap align-center>
-        <v-flex xs12 sm4 my-5>
-          <div class="nv-title">TEAM</div>
-        </v-flex>
-        <v-flex mt-3 mb-5 style="width: 1200px;">
-          <v-layout row wrap>
-            <v-flex md6 class="px-4 message-p">
-              <p>这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介</p>
-              <p>这是一条公司简介</p>
-              <p>这是一条公司简介</p>
-            </v-flex>
-            <v-flex md6 class="px-4">
-              <v-img src="../aboutus/03.jpg" width="100%"></v-img>
-            </v-flex>
-          </v-layout>
-        </v-flex>
-      </v-layout>
-    </section>
-    <section class="py-4">
-      <v-layout column wrap align-center>
-        <v-flex xs12 sm4 my-5>
           <div class="nv-title">CONTACT</div>
         </v-flex>
         <v-flex mb-5 style="width: 1200px;">
           <v-container grid-list-xl>
-            <v-layout row wrap align-center>
+            <v-layout row wrap align-start>
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <v-icon x-large>location_on</v-icon>
+                    <v-icon x-large style="color: #444;">location_on</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="text-xs-center" style="font-size: 16px;">深圳市宝安区留仙大道2号</div>
@@ -66,7 +28,7 @@
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <v-icon x-large>phone</v-icon>
+                    <v-icon x-large style="color: #444;">phone</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="text-xs-center" style="font-size: 16px;">0755-86518755 / 86518753</div>
@@ -76,7 +38,7 @@
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <v-icon x-large>email</v-icon>
+                    <v-icon x-large style="color: #444;">email</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="text-xs-center" style="font-size: 16px;">sales@frontsurf.com</div>
@@ -86,10 +48,13 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex mt-2 style="width: 1200px;">
-          <v-form v-model="valid" ref="form">
-            <v-layout row wrap align-center>
-              <v-flex xs12 md4 px-3>
+        <v-flex class="mb-4" style="width: 1200px;">
+          <v-form v-model="valid" ref="form" class="px-5">
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader align-end>Name<span class="required">(必须)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
                 <v-text-field
                   v-model="form.name"
                   :rules="nameRules"
@@ -97,18 +62,26 @@
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12 md4 px-3>
+            </v-layout>
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader>Tel<span class="required">(必须)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
                 <v-text-field
-                  xs12 md4
                   v-model="form.phone"
                   :rules="phoneRules"
                   label="Tel"
                   required
                 ></v-text-field>
               </v-flex>
-              <v-flex xs12 md4 px-3>
+            </v-layout>
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader>E-mail<span class="required">(必须)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
                 <v-text-field
-                  xs12 md4
                   v-model="form.email"
                   :rules="emailRules"
                   label="E-mail"
@@ -116,15 +89,34 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-            <v-textarea
-              v-model="form.message"
-              :rules="messageRules"
-              name="input-7-1"
-              label="Message"
-              rows="1"
-              :counter="1000"
-              class="mx-3 mt-4"
-            ></v-textarea>
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader>Company<span class="required">(必须)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
+                <v-text-field
+                  v-model="form.company"
+                  :rules="companyRules"
+                  label="Company"
+                  required
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader>Message<span class="required">(必须)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
+                <v-textarea
+                  v-model="form.message"
+                  :rules="messageRules"
+                  name="input-7-1"
+                  label="Message"
+                  rows="8"
+                  :counter="1000"
+                ></v-textarea>
+              </v-flex>
+            </v-layout>
           </v-form>
         </v-flex>
         <v-flex xs12 sm4 mb-5 class="mt-5 mb-4">
@@ -159,6 +151,9 @@ export default {
       ],
       emailRules: [
         v => !!v || 'E-mail is required'
+      ],
+      companyRules: [
+        v => !!v || 'Company is required'
       ],
       messageRules: [
         v => !!v || 'Message is required',

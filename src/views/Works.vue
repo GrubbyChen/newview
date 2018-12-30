@@ -7,6 +7,13 @@
         </v-flex>
       </v-layout>
     </section>
+    <section class="pt-4">
+      <v-layout column wrap align-center>
+        <v-flex xs12 sm4 my-5>
+          <div class="nv-title">WORKS</div>
+        </v-flex>
+      </v-layout>
+    </section>
     <section>
       <v-tabs
         slot="extension"
@@ -14,16 +21,16 @@
         fixed-tabs
         color="transparent"
         icons-and-text
-        class="nv-works-tabs"
+        class="nv-works-tabs py-4"
       >
         <v-tabs-slider color="black"></v-tabs-slider>
         <v-tab href="#image">
           IMAGE
-          <v-icon x-large>image</v-icon>
+          <!-- <v-icon x-large>image</v-icon> -->
         </v-tab>
         <v-tab href="#video">
           VIDEO
-          <v-icon x-large>videocam</v-icon>
+          <!-- <v-icon x-large>videocam</v-icon> -->
         </v-tab>
       </v-tabs>
     </section>
@@ -33,7 +40,7 @@
       align-center
     >
       <!-- <v-flex xs12 sm4 class="mt-5 mb-4">
-        <div class="nv-home-title">WORKS</div>
+        <div class="nv-title">WORKS</div>
       </v-flex> -->
       <v-flex xs12 style="width: 1200px;">
         <v-container grid-list-xl v-show="tabs === 'image'">

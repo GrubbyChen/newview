@@ -57,11 +57,12 @@ module.exports = {
 
   sendEmail: async (ctx, next) => {
     try {
-      let { name, phone, email, message } = ctx.request.body
+      let { name, phone, email, company, message } = ctx.request.body
       const emailBody = `
         <p>Name: ${name}</p>
         <p>Phone: ${phone}</p>
         <p>Email: ${email}</p>
+        <p>Company: ${company}</p>
         <p>Message: ${message}</p>
       `
       await sendEmail(emailBody)

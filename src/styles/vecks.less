@@ -1,0 +1,30 @@
+
+.area-common--deco-01, .area-common--deco-02 {
+  position: relative;
+  margin-top: 16px;
+  padding-top: 64px;
+}
+.area-common--deco-01:before, .area-common--deco-02:before {
+  content: "";
+  position: absolute;
+  right: -10px;
+  left: -10px;
+  height: 68px;
+}
+.area-common--deco-01:before {
+  top: 40px;
+  background: linear-gradient(to right, #fcfdfc 0%, #f1f1f2 100%);
+  transform: rotate(-3.5deg);
+}
+.area-common--deco-02:before {
+  top: 88px;
+  background: linear-gradient(to right, #f1f1f2 0%, #fcfdfc 100%);
+  transform: rotate(3.5deg);
+}
+
+.headline-secondary {
+  margin-bottom: 36px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+}

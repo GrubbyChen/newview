@@ -60,16 +60,17 @@ export default {
       }, {
         name: 'WORKS',
         url: '/nvworks/'
-      }, {
-        name: 'AGENT',
-        url: '/agent/'
       },
       // {
-      //   name: 'COMPANY',
-      //   url: '/company/'
+      //   name: 'AGENT',
+      //   url: '/agent/'
       // },
       {
-        name: 'ABOUT US',
+        name: 'COMPANY',
+        url: '/company/'
+      },
+      {
+        name: 'CONTACT',
         url: '/contact/'
       }],
       activedMenu: 'home'

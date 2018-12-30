@@ -2,6 +2,8 @@
 
 const fs = require('fs')
 const path = require('path')
+// const gm = require('gm')
+// const imageMagick = gm.subClass({ imageMagick: true })
 const CarouselModel = require('../models/carousel')
 const ImageModel = require('../models/image')
 const VideoModel = require('../models/video')
@@ -306,10 +308,10 @@ const _saveFile2Local = async (file, fileName, type) => {
     if (!fs.existsSync(uploadPath1)) fs.mkdirSync(uploadPath1)
     if (!fs.existsSync(uploadPath2)) fs.mkdirSync(uploadPath2)
 
-    const folderPath1 = `${uploadPath1}/${type}`
-    const folderPath2 = `${uploadPath2}/${type}`
-    const filePath1 = `${folderPath1}/${fileName}`
-    const filePath2 = `${folderPath2}/${fileName}`
+    const folderPath1 = `${uploadPath1}\\${type}`
+    const folderPath2 = `${uploadPath2}\\${type}`
+    const filePath1 = `${folderPath1}\\${fileName}`
+    const filePath2 = `${folderPath2}\\${fileName}`
     if (!fs.existsSync(folderPath1)) fs.mkdirSync(folderPath1)
     if (!fs.existsSync(folderPath2)) fs.mkdirSync(folderPath2)
 
@@ -319,6 +321,15 @@ const _saveFile2Local = async (file, fileName, type) => {
     const fileStream2 = fs.createWriteStream(filePath2) // 创建可写流
     reader.pipe(fileStream1) // 可读流通过管道写入可写流
     reader.pipe(fileStream2) // 可读流通过管道写入可写流
+
+    // setTimeout(() => {
+    //   imageMagick(filePath1).resize(384, 216).write(`${folderPath1}/sm_${fileName}`, function (err) {
+    //     if (!err) console.log('done')
+    //   })
+    //   imageMagick(filePath2).resize(384, 216).write(`${folderPath2}/sm_${fileName}`, function (err) {
+    //     if (!err) console.log('done')
+    //   })
+    // }, 1000)
   } catch (err) {
     throw (err)
   }
