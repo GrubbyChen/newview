@@ -329,10 +329,10 @@ const _saveFile2Local = async (file, fileName, type) => {
     if (!fs.existsSync(uploadPath1)) fs.mkdirSync(uploadPath1)
     if (!fs.existsSync(uploadPath2)) fs.mkdirSync(uploadPath2)
 
-    const folderPath1 = `${uploadPath1}\\${type}`
-    const folderPath2 = `${uploadPath2}\\${type}`
-    const filePath1 = `${folderPath1}\\${fileName}`
-    const filePath2 = `${folderPath2}\\${fileName}`
+    const folderPath1 = `${uploadPath1}/${type}`
+    const folderPath2 = `${uploadPath2}/${type}`
+    const filePath1 = `${folderPath1}/${fileName}`
+    const filePath2 = `${folderPath2}/${fileName}`
     if (!fs.existsSync(folderPath1)) fs.mkdirSync(folderPath1)
     if (!fs.existsSync(folderPath2)) fs.mkdirSync(folderPath2)
 
