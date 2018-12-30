@@ -15,7 +15,7 @@
         <v-flex mt-3 mb-5 style="width: 980px;">
           <v-layout row wrap>
             <v-flex md4 class="px-4">
-              <v-img src="../aboutus/03.jpg" width="100%"></v-img>
+              <v-img src="../company/personal.jpg" width="100%"></v-img>
             </v-flex>
             <v-flex md8 class="px-4 nv-message">
               <p>这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介这是一条公司简介</p>

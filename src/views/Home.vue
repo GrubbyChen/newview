@@ -1,6 +1,6 @@
 <template>
   <div class="nv-home">
-    <v-carousel height="800px" hide-controls>
+    <v-carousel height="800px" hide-controls style="background: #7f909f;">
       <v-carousel-item
         v-for="(item, index) in carousels"
         :key="index"
