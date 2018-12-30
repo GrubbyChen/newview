@@ -36,7 +36,7 @@
       </v-layout>
     </section>
     <section>
-      <v-parallax src="home/01.jpg" height="400">
+      <v-parallax src="/home/01.jpg" height="400">
         <v-layout
           column
           align-center
@@ -111,7 +111,7 @@
     </section>
 
     <section>
-      <v-parallax src="home/02.jpg" height="400">
+      <v-parallax src="/home/02.jpg" height="400">
         <v-layout column align-center justify-center>
         </v-layout>
       </v-parallax>
