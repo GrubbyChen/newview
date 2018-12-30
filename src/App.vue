@@ -80,9 +80,6 @@ export default {
     handleClickMenu (item) {
       this.activedMenu = item.name
       this.$router.push(item.router)
-    },
-    gotoRouter (url) {
-      location.href = url
     }
   },
   mounted () {
