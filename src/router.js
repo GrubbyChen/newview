@@ -18,12 +18,12 @@ export default new Router({
       component: () => import('./views/Works.vue')
     },
     {
-      path: '/company',
+      path: '/nvcompany',
       name: 'about',
       component: () => import('./views/Company.vue')
     },
     {
-      path: '/contact',
+      path: '/nvcontact',
       name: 'about',
       component: () => import('./views/Contact.vue')
     }

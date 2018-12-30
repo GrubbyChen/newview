@@ -67,11 +67,11 @@ export default {
       // },
       {
         name: 'COMPANY',
-        router: '/company'
+        router: '/nvcompany'
       },
       {
         name: 'CONTACT',
-        router: '/contact'
+        router: '/nvcontact'
       }],
       activedMenu: 'home'
     }
