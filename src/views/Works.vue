@@ -43,10 +43,10 @@
         <div class="nv-title">WORKS</div>
       </v-flex> -->
       <v-flex xs12 style="width: 1200px;">
-        <v-container grid-list-xl v-if="tabs === 'image'">
+        <v-container grid-list-xl v-show="tabs === 'image'">
           <works-image></works-image>
         </v-container>
-        <v-container grid-list-xl v-if="tabs === 'video'">
+        <v-container grid-list-xl v-show="tabs === 'video'">
           <v-layout row wrap align-start>
             <v-flex
               v-for="(item, index) in videos" :key="index"
