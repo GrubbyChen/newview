@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-import { message } from 'ant-design-vue'
 
 const http = axios.create({
   timeout: 20000,
@@ -28,7 +27,6 @@ http.interceptors.response.use(
       // 内部接口走这里（两种接口的error信息不同）
       const msg = response.data.msg || '未知错误！'
       console.error(msg)
-      message.error(msg)
       return Promise.reject(msg)
     }
 
