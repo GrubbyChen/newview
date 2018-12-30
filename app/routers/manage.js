@@ -25,7 +25,8 @@ router.post('/updateImageInfo', ManageController.updateImageInfo)
 router.post('/removeImage', ManageController.removeImage)
 
 router.get('/fetchVideo', ManageController.fetchVideo)
-router.post('/uploadVideo', ManageController.uploadVideo)
+// router.post('/uploadVideo', ManageController.uploadVideo)
+router.post('/createVideo', ManageController.createVideo)
 router.post('/updateVideoInfo', ManageController.updateVideoInfo)
 router.post('/removeVideo', ManageController.removeVideo)
 

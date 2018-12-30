@@ -184,6 +184,23 @@ module.exports = {
     }
   },
 
+  createVideo: async (ctx, next) => {
+    try {
+      const { src, title } = ctx.request.body
+      ctx.body = {
+        code: '0',
+        data: await new VideoModel({ src, title }).save()
+      }
+      next()
+    } catch (err) {
+      console.error(err)
+      ctx.body = {
+        code: '1',
+        msg: '系统错误'
+      }
+    }
+  },
+
   uploadVideo: async (ctx, next) => {
     try {
       ctx.body = {
@@ -202,11 +219,15 @@ module.exports = {
 
   updateVideoInfo: async (ctx, next) => {
     try {
-      const { id, title } = ctx.request.body
+      const { id, src, title } = ctx.request.body
+
+      const params = {}
+      if (src) params.src = src
+      if (title) params.title = title
 
       ctx.body = {
         code: '0',
-        data: await VideoModel.findByIdAndUpdate(id, { title })
+        data: await VideoModel.findByIdAndUpdate(id, params)
       }
       next()
     } catch (err) {

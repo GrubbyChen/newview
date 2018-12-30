@@ -137,6 +137,13 @@
       font-weight: bold;
       border-radius: 4px;
       transition: all .3s;
+      &:not(.v-tabs__item--active) {
+        opacity: .8;
+      }
+      &:hover {
+        background-color: #0b1c2f;
+        color: #fff;
+      }
     }
     .v-tabs__item--active {
       background-color: #0b1c2f;
