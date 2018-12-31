@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="/company/top_bk.jpg" width="100%" height="480px"></v-img>
+          <v-img :src="topbkSrc" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -21,6 +21,7 @@
           <v-layout row wrap>
             <v-flex md4 class="pr-4">
               <v-img src="/company/personal.jpg" width="100%"></v-img>
+              <h2 class="hw">洪威</h2>
             </v-flex>
             <v-flex md8 class="pl-5 nv-message">
               <section>
@@ -37,7 +38,6 @@
                 <p>2014年写真展 vision vision</p>
                 <p>2015年独立、new view studio 創立</p>
                 <p>2017年   A'DESING AWARD  PLATINUM A7DESING AWARD GOLD</p>
-                <p>2015年在东京成立new view摄影工作室</p>
               </section>
             </v-flex>
           </v-layout>
@@ -129,9 +129,22 @@
 export default {
   data () {
     return {
+      topbkSrc: '/company/sm_top_bk.jpg'
     }
   },
   methods: {
+    loadTopbk () {
+      const img = new Image()
+      const src = '/company/top_bk.jpg'
+      img.onload = () => {
+        img.onload = null
+        this.topbkSrc = src
+      }
+      img.src = src
+    }
+  },
+  mounted () {
+    this.loadTopbk()
   }
 }
 </script>

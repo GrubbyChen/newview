@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="../works/top_bk.jpg" width="100%" height="480px"></v-img>
+          <v-img :src="topbkSrc" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -84,13 +84,27 @@ export default {
   components: { WorksImage },
   data () {
     return {
+      topbkSrc: '/works/sm_top_bk.jpg',
       tabs: 'image',
       page: 1,
       videos: []
     }
   },
+  methods: {
+    loadTopbk () {
+      const img = new Image()
+      const src = '/works/top_bk.jpg'
+      img.onload = () => {
+        img.onload = null
+        this.topbkSrc = src
+      }
+      img.src = src
+    }
+  },
   async mounted () {
     this.videos = await axios.get('/gateway/fetchWorkVideo')
+
+    this.loadTopbk()
   }
 }
 </script>
