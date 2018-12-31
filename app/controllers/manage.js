@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 // const gm = require('gm')
 // const imageMagick = gm.subClass({ imageMagick: true })
+const sharp = require('sharp')
 const CarouselModel = require('../models/carousel')
 const ImageModel = require('../models/image')
 const VideoModel = require('../models/video')
@@ -271,33 +272,14 @@ const _upload = async (ctx, type) => {
     fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
 
     await _saveFile2Local(file, fileName, type) // 保存文件到本地项目
-    const filePath = `${ctx.protocol}://${ctx.hostname}:2080/upload/${type}/${fileName}` // 文件路径
-    const distPath = `${ctx.protocol}://${ctx.hostname}/upload/${type}/${fileName}` // 文件路径
+    const fileFolder = `${ctx.protocol}://${ctx.hostname}:2080/upload/${type}`
+    const distFolder = `${ctx.protocol}://${ctx.hostname}/upload/${type}`
+    const filePath = `${fileFolder}/${fileName}` // 文件路径
+    const distPath = `${distFolder}/${fileName}` // 文件路径
+    const smFilePath = `${fileFolder}/sm_${fileName}` // 文件路径
+    const smDistPath = `${distFolder}/sm_${fileName}` // 文件路径
 
-    return { fileName, filePath, distPath }
-  } catch (err) {
-    throw (err)
-  }
-}
-
-const _reupload = async (ctx, type) => {
-  try {
-    const { id } = ctx.request.body
-    const _file = await CarouselModel.findById(id)
-    fs.unlinkSync(path.join(__dirname, `../../public/upload/${type}/`) + _file.fileName)
-    fs.unlinkSync(path.join(__dirname, `../../dist/upload/${type}/`) + _file.fileName)
-
-    let {
-      files: { file },
-      files: { file: { name: fileName } }
-    } = ctx.request
-
-    fileName = `${Math.ceil(Math.random() * 100000)}_${fileName}`
-    await _saveFile2Local(file, fileName, type) // 保存文件到本地项目
-    const filePath = `${ctx.protocol}://${ctx.hostname}:2080/upload/${type}/${fileName}` // 文件路径
-    const distPath = `${ctx.protocol}://${ctx.hostname}/upload/${type}/${fileName}` // 文件路径
-
-    return { fileName, filePath, distPath }
+    return { fileName, filePath, distPath, smFilePath, smDistPath }
   } catch (err) {
     throw (err)
   }
@@ -305,9 +287,30 @@ const _reupload = async (ctx, type) => {
 
 const _remove = async (fileName, type) => {
   try {
+    const folderPath1 = path.join(__dirname, `../../public/upload/${type}`)
+    const folderPath2 = path.join(__dirname, `../../dist/upload/${type}`)
+    const filePath1 = `${folderPath1}/${fileName}`
+    const filePath2 = `${folderPath2}/${fileName}`
+    const smPath1 = `${folderPath1}/sm_${fileName}`
+    const smPath2 = `${folderPath2}/sm_${fileName}`
     // 移除目标文件
-    fs.unlinkSync(path.join(__dirname, `../../public/upload/${type}/`) + fileName)
-    fs.unlinkSync(path.join(__dirname, `../../dist/upload/${type}/`) + fileName)
+    if (fs.existsSync(filePath1)) fs.unlinkSync(filePath1)
+    if (fs.existsSync(filePath2)) fs.unlinkSync(filePath2)
+    if (fs.existsSync(smPath1)) fs.unlinkSync(smPath1)
+    if (fs.existsSync(smPath2)) fs.unlinkSync(smPath2)
+  } catch (err) {
+    throw (err)
+  }
+}
+
+const _reupload = async (ctx, type) => {
+  try {
+    // TODO: 重新上传不删除之前的照片，BUG
+    const { id } = ctx.request.body
+    const _file = await CarouselModel.findById(id)
+    _remove(_file.fileName, type)
+
+    return await _upload(ctx, type)
   } catch (err) {
     throw (err)
   }
@@ -331,26 +334,21 @@ const _saveFile2Local = async (file, fileName, type) => {
 
     const folderPath1 = `${uploadPath1}/${type}`
     const folderPath2 = `${uploadPath2}/${type}`
-    const filePath1 = `${folderPath1}/${fileName}`
-    const filePath2 = `${folderPath2}/${fileName}`
     if (!fs.existsSync(folderPath1)) fs.mkdirSync(folderPath1)
     if (!fs.existsSync(folderPath2)) fs.mkdirSync(folderPath2)
 
-    // 写入文件
-    const reader = fs.createReadStream(upPath) // 创建可读流
-    const fileStream1 = fs.createWriteStream(filePath1) // 创建可写流
-    const fileStream2 = fs.createWriteStream(filePath2) // 创建可写流
-    reader.pipe(fileStream1) // 可读流通过管道写入可写流
-    reader.pipe(fileStream2) // 可读流通过管道写入可写流
+    // 生成正常图片，轮播图大小缩放到 1920 * 720
+    if (type === 'carousel') {
+      sharp(upPath).resize(1920, 720).toFile(`${folderPath1}/${fileName}`)
+      sharp(upPath).resize(1920, 720).toFile(`${folderPath2}/${fileName}`)
+    } else {
+      sharp(upPath).toFile(`${folderPath1}/${fileName}`)
+      sharp(upPath).toFile(`${folderPath2}/${fileName}`)
+    }
 
-    // setTimeout(() => {
-    //   imageMagick(filePath1).resize(384, 216).write(`${folderPath1}/sm_${fileName}`, function (err) {
-    //     if (!err) console.log('done')
-    //   })
-    //   imageMagick(filePath2).resize(384, 216).write(`${folderPath2}/sm_${fileName}`, function (err) {
-    //     if (!err) console.log('done')
-    //   })
-    // }, 1000)
+    // 生成缩略图
+    sharp(upPath).resize(384, 216).toFile(`${folderPath1}/sm_${fileName}`)
+    sharp(upPath).resize(384, 216).toFile(`${folderPath2}/sm_${fileName}`)
   } catch (err) {
     throw (err)
   }

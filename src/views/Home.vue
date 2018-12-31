@@ -4,7 +4,7 @@
       <v-carousel-item
         v-for="(item, index) in carousels"
         :key="index"
-        :src="item.distPath"
+        :src="item.smDistPath"
       ></v-carousel-item>
     </v-carousel>
     <section class="nv-home-works my-5">
@@ -174,9 +174,30 @@ export default {
       images: []
     }
   },
+  methods: {
+    loadCarousels () {
+      for (let item of this.carousels) {
+        const img = new Image()
+        img.onload = () => {
+          img.onload = null
+          item.smDistPath = item.distPath
+        }
+        img.src = item.distPath
+      }
+    },
+    loadImages () {
+      for (let item of this.images) {
+        const img = new Image()
+        img.src = item.distPath
+      }
+    }
+  },
   async mounted () {
     this.carousels = await axios.get('/gateway/fetchCarousel')
     this.images = (await axios.get('/gateway/fetchWorkImage')).slice(0, 6)
+    this.loadCarousels()
+    // 首页不需要预留，去掉预加载
+    // this.loadImages()
   }
 }
 </script>

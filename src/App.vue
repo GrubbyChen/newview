@@ -76,8 +76,21 @@ export default {
       activedMenu: 'home'
     }
   },
+  computed: {
+    routePath () {
+      return this.$route.path
+    }
+  },
+  watch: {
+    routePath (newVal) {
+      for (let item of this.menus) {
+        if (newVal === item.router) this.activedMenu = item.name
+      }
+    }
+  },
   methods: {
     handleClickMenu (item) {
+      console.log(this.$route)
       this.activedMenu = item.name
       this.$router.push(item.router)
     }

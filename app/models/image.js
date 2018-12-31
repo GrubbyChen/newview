@@ -6,10 +6,12 @@ const { options } = require('./_')
 
 const schema = new Schema(
   {
+    title: { type: String, default: '' }, // 文件标题
     fileName: { type: String, required: true }, // 文件名称
     filePath: { type: String, required: true }, // 文件路径
     distPath: { type: String, required: true }, // 静态文件路径
-    title: { type: String, default: '' } // 文件标题
+    smFilePath: { type: String, required: true },
+    smDistPath: { type: String, required: true }
   },
   options
 )

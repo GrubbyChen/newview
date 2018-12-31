@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="../works/top_bk.jpg" width="100%" height="520px"></v-img>
+          <v-img src="../works/top_bk.jpg" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -24,14 +24,9 @@
         class="nv-works-tabs py-4"
       >
         <v-tabs-slider color="black"></v-tabs-slider>
-        <v-tab href="#image">
-          IMAGE
-          <!-- <v-icon x-large>image</v-icon> -->
-        </v-tab>
-        <v-tab href="#video">
-          VIDEO
-          <!-- <v-icon x-large>videocam</v-icon> -->
-        </v-tab>
+        <v-tab href="#image">IMAGE</v-tab>
+        <!-- <v-tab href="#photo">PHOTO</v-tab> -->
+        <v-tab href="#video">VIDEO</v-tab>
       </v-tabs>
     </section>
     <v-layout
@@ -39,13 +34,13 @@
       wrap
       align-center
     >
-      <!-- <v-flex xs12 sm4 class="mt-5 mb-4">
-        <div class="nv-title">WORKS</div>
-      </v-flex> -->
       <v-flex xs12 style="width: 1200px;">
         <v-container grid-list-xl v-show="tabs === 'image'">
           <works-image></works-image>
         </v-container>
+        <!-- <v-container grid-list-xl v-show="tabs === 'photo'">
+          <works-image></works-image>
+        </v-container> -->
         <v-container grid-list-xl v-show="tabs === 'video'">
           <v-layout row wrap align-start>
             <v-flex

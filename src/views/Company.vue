@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="/company/top_bk.jpg" width="100%" height="520px"></v-img>
+          <v-img src="/company/top_bk.jpg" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>

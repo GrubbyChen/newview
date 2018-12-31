@@ -5,7 +5,7 @@
     display: inline-block;
     margin-left: 30px;
     font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.1em;
     word-spacing: normal;
     vertical-align: top;
@@ -15,12 +15,16 @@
       display: inline-block;
       color: #000;
       font-weight: normal;
+      transition: 0.5s;
       &:hover,
       &.active {
         &:before {
           visibility: visible;
           transform: scaleX(1);
         }
+      }
+      &.active {
+        font-weight: bold;
       }
       &:before {
         content: '';
