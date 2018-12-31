@@ -14,7 +14,7 @@ module.exports = {
     try {
       ctx.body = {
         code: '0',
-        data: await CarouselModel.find()
+        data: await CarouselModel.find().sort({ created: -1 })
       }
       next()
     } catch (err) {
@@ -338,17 +338,19 @@ const _saveFile2Local = async (file, fileName, type) => {
     if (!fs.existsSync(folderPath2)) fs.mkdirSync(folderPath2)
 
     // 生成正常图片，轮播图大小缩放到 1920 * 720
-    if (type === 'carousel') {
-      sharp(upPath).resize(1920, 720).toFile(`${folderPath1}/${fileName}`)
-      sharp(upPath).resize(1920, 720).toFile(`${folderPath2}/${fileName}`)
-    } else {
-      sharp(upPath).toFile(`${folderPath1}/${fileName}`)
-      sharp(upPath).toFile(`${folderPath2}/${fileName}`)
-    }
+    // if (type === 'carousel') {
+    //   sharp(upPath).resize(1920, 720).toFile(`${folderPath1}/${fileName}`)
+    //   sharp(upPath).resize(1920, 720).toFile(`${folderPath2}/${fileName}`)
+    // } else {
+    //   sharp(upPath).toFile(`${folderPath1}/${fileName}`)
+    //   sharp(upPath).toFile(`${folderPath2}/${fileName}`)
+    // }
+    sharp(upPath).resize(1920, 1080).toFile(`${folderPath1}/${fileName}`)
+    sharp(upPath).resize(1920, 1080).toFile(`${folderPath2}/${fileName}`)
 
     // 生成缩略图
-    sharp(upPath).resize(384, 216).toFile(`${folderPath1}/sm_${fileName}`)
-    sharp(upPath).resize(384, 216).toFile(`${folderPath2}/sm_${fileName}`)
+    sharp(upPath).resize(192, 108).toFile(`${folderPath1}/sm_${fileName}`)
+    sharp(upPath).resize(192, 108).toFile(`${folderPath2}/sm_${fileName}`)
   } catch (err) {
     throw (err)
   }

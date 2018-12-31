@@ -175,8 +175,8 @@ export default {
     }
   },
   methods: {
-    loadCarousels () {
-      for (let item of this.carousels) {
+    loadImages (images) {
+      for (let item of images) {
         const img = new Image()
         img.onload = () => {
           img.onload = null
@@ -184,20 +184,13 @@ export default {
         }
         img.src = item.distPath
       }
-    },
-    loadImages () {
-      for (let item of this.images) {
-        const img = new Image()
-        img.src = item.distPath
-      }
     }
   },
   async mounted () {
     this.carousels = await axios.get('/gateway/fetchCarousel')
     this.images = (await axios.get('/gateway/fetchWorkImage')).slice(0, 6)
-    this.loadCarousels()
-    // 首页不需要预留，去掉预加载
-    // this.loadImages()
+    this.loadImages(this.carousels)
+    this.loadImages(this.images)
   }
 }
 </script>

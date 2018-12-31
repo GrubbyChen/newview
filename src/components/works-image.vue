@@ -41,6 +41,10 @@ export default {
     this.images = await axios.get('/gateway/fetchWorkImage')
     for (let item of this.images) {
       const img = new Image()
+      img.onload = () => {
+        img.onload = null
+        item.smDistPath = item.distPath
+      }
       img.src = item.distPath
     }
   }

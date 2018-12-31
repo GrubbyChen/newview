@@ -160,8 +160,16 @@
 
 .nv-message {
   font-size: 15px;
-  p:not(:first-child) {
+  & > p:not(:first-child) {
     margin-top: 32px;
+  }
+  & > section {
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+    & > p:not(:first-child) {
+      margin-top: 8px;
+    }
   }
   .nv-message-introduce {
     &:not(:first-child) {
@@ -178,4 +186,13 @@
 .required {
   margin-left: 12px;
   color: #ff0000;
+}
+
+.message-success-tips {
+  color: #ff0000;
+  opacity: 0;
+  transition: .5s;
+  &.show {
+    opacity: 1;
+  }
 }

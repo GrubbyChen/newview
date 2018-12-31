@@ -117,6 +117,11 @@
                 ></v-textarea>
               </v-flex>
             </v-layout>
+            <v-layout row mt-2>
+              <v-flex xs9 offset-xs3>
+                <p class="message-success-tips" :class="{ 'show': messageSendSuccess }">信息发送成功</p>
+              </v-flex>
+            </v-layout>
           </v-form>
         </v-flex>
         <v-flex xs12 sm4 mb-5 class="mt-5 mb-4">
@@ -129,6 +134,7 @@
 
 <script>
 import axios from '@/tools/axios'
+import { setTimeout } from 'timers';
 
 export default {
   // components: { WorksImage },
@@ -136,6 +142,7 @@ export default {
     return {
       tabs: 'image',
       page: 1,
+      messageSendSuccess: false,
       valid: false,
       form: {
         name: '',
@@ -165,6 +172,10 @@ export default {
     async sendEmail () {
       if (this.$refs.form.validate()) {
         await axios.post('/gateway/sendEmail', this.form)
+        this.messageSendSuccess = true
+        setTimeout(() => {
+          this.messageSendSuccess = false
+        }, 3000)
       }
     }
   }
