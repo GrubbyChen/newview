@@ -12,7 +12,7 @@
       <v-card-title primary-title class="px-0 pt-3">{{ item.title }}</v-card-title>
     </v-flex>
 
-    <v-flex xs12 mb-4>
+    <v-flex xs12 mb-4 v-show="totalPage > 1">
       <div class="text-xs-center">
         <v-pagination
           v-model="page"

@@ -21,7 +21,7 @@
             <v-layout row wrap align-start>
               <v-flex
                 v-for="(item, index) in images" :key="index"
-                xs12 md4 px-4 py-4 class="nv-works-item">
+                xs12 md4 px-4 py-4 class="nv-works-item photo">
                 <v-card class="elevation-0 transparent">
                   <v-img :src="item.distPath" height="194px"></v-img>
                   <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
