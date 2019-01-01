@@ -15,17 +15,17 @@
         <v-flex mb-5 style="width: 1200px;">
           <v-container grid-list-xl>
             <v-layout row wrap align-start>
-              <v-flex xs12 md4>
+              <v-flex xs12 md6>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
                     <v-icon x-large style="color: #444;">location_on</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="text-xs-center" style="font-size: 16px;">深圳市宝安区留仙大道2号</div>
+                    <div class="text-xs-center" style="font-size: 16px;">〒166-0002東京都杉並区高円寺北1-21-5 4F-1</div>
                   </v-card-title>
                 </v-card>
               </v-flex>
-              <v-flex xs12 md4>
+              <!-- <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
                     <v-icon x-large style="color: #444;">phone</v-icon>
@@ -34,14 +34,14 @@
                     <div class="text-xs-center" style="font-size: 16px;">0755-86518755 / 86518753</div>
                   </v-card-title>
                 </v-card>
-              </v-flex>
-              <v-flex xs12 md4>
+              </v-flex> -->
+              <v-flex xs12 md6>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
                     <v-icon x-large style="color: #444;">email</v-icon>
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
-                    <div class="text-xs-center" style="font-size: 16px;">sales@frontsurf.com</div>
+                    <div class="text-xs-center" style="font-size: 16px;">info@newview.co.jp</div>
                   </v-card-title>
                 </v-card>
               </v-flex>
@@ -52,66 +52,66 @@
           <v-form v-model="valid" ref="form" class="px-5">
             <v-layout row mt-4>
               <v-flex xs3>
-                <v-subheader align-end>Name<span class="required">(必须)</span></v-subheader>
+                <v-subheader align-end>お名前<span class="required">(必須)</span></v-subheader>
               </v-flex>
               <v-flex xs9>
                 <v-text-field
                   v-model="form.name"
                   :rules="nameRules"
-                  label="Name"
+                  label="お名前"
                   required
                 ></v-text-field>
               </v-flex>
             </v-layout>
             <v-layout row mt-4>
               <v-flex xs3>
-                <v-subheader>Tel<span class="required">(必须)</span></v-subheader>
-              </v-flex>
-              <v-flex xs9>
-                <v-text-field
-                  v-model="form.phone"
-                  :rules="phoneRules"
-                  label="Tel"
-                  required
-                ></v-text-field>
-              </v-flex>
-            </v-layout>
-            <v-layout row mt-4>
-              <v-flex xs3>
-                <v-subheader>E-mail<span class="required">(必须)</span></v-subheader>
+                <v-subheader>メールアドレス<span class="required">(必須)</span></v-subheader>
               </v-flex>
               <v-flex xs9>
                 <v-text-field
                   v-model="form.email"
                   :rules="emailRules"
-                  label="E-mail"
+                  label="メールアドレス"
                   required
                 ></v-text-field>
               </v-flex>
             </v-layout>
             <v-layout row mt-4>
               <v-flex xs3>
-                <v-subheader>Company<span class="required">(必须)</span></v-subheader>
+                <v-subheader>御社名<span class="required">(必須)</span></v-subheader>
               </v-flex>
               <v-flex xs9>
                 <v-text-field
                   v-model="form.company"
                   :rules="companyRules"
-                  label="Company"
+                  label="御社名"
                   required
                 ></v-text-field>
               </v-flex>
             </v-layout>
             <v-layout row mt-4>
               <v-flex xs3>
-                <v-subheader>Message<span class="required">(必须)</span></v-subheader>
+                <v-subheader>電話番号<span class="required">(必須)</span></v-subheader>
+              </v-flex>
+              <v-flex xs9>
+                <v-text-field
+                  v-model="form.phone"
+                  :rules="phoneRules"
+                  label="電話番号"
+                  required
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row mt-4>
+              <v-flex xs3>
+                <v-subheader>お間い合わせ内容<span class="required">(必須)</span></v-subheader>
               </v-flex>
               <v-flex xs9>
                 <v-textarea
                   v-model="form.message"
                   :rules="messageRules"
                   name="input-7-1"
-                  label="Message"
+                  label="お間い合わせ内容"
                   rows="8"
                   :counter="1000"
                 ></v-textarea>
@@ -119,13 +119,13 @@
             </v-layout>
             <v-layout row mt-2>
               <v-flex xs9 offset-xs3>
-                <p class="message-success-tips" :class="{ 'show': messageSendSuccess }">信息发送成功</p>
+                <p class="message-success-tips" :class="{ 'show': messageSendSuccess }">送信完了</p>
               </v-flex>
             </v-layout>
           </v-form>
         </v-flex>
         <v-flex xs12 sm4 mb-5 class="mt-5 mb-4">
-          <a class="nv-page-button" @click="sendEmail">提交留言</a>
+          <a class="nv-page-button" @click="sendEmail">送信</a>
         </v-flex>
       </v-layout>
     </section>

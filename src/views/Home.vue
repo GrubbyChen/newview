@@ -35,7 +35,7 @@
         </v-flex>
       </v-layout>
     </section>
-    <section>
+    <!-- <section>
       <v-parallax src="/home/01.jpg" height="400">
         <v-layout
           column
@@ -108,7 +108,7 @@
           </v-container>
         </v-flex>
       </v-layout>
-    </section>
+    </section> -->
 
     <section>
       <v-parallax src="/home/02.jpg" height="400">
@@ -123,34 +123,34 @@
           <v-flex xs12 sm4>
             <v-card class="elevation-0 transparent">
               <v-card-title primary-title class="layout justify-center">
-                <div class="nv-title my-3">CONTACT</div>
+                <div class="nv-title mt-3">CONTACT</div>
               </v-card-title>
-              <v-card-text>
+              <!-- <v-card-text>
                 Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-              </v-card-text>
-              <v-list class="transparent">
+              </v-card-text> -->
+              <v-list class="transparent mt-4">
                 <v-list-tile>
                   <v-list-tile-action>
                     <v-icon>location_on</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
-                    <v-list-tile-title>深圳市宝安区留仙大道2号</v-list-tile-title>
+                    <v-list-tile-title>〒166-0002東京都杉並区高円寺北1-21-5 4F-1</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile>
+                <!-- <v-list-tile>
                   <v-list-tile-action>
                     <v-icon>phone</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <v-list-tile-title>0755-86518755 / 86518753</v-list-tile-title>
                   </v-list-tile-content>
-                </v-list-tile>
+                </v-list-tile> -->
                 <v-list-tile>
                   <v-list-tile-action>
                     <v-icon>email</v-icon>
                   </v-list-tile-action>
                   <v-list-tile-content>
-                    <v-list-tile-title>sales@frontsurf.com</v-list-tile-title>
+                    <v-list-tile-title>info@newview.co.jp</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
