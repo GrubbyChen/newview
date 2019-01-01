@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img :src="topbkSrc" width="100%" height="480px"></v-img>
+          <v-img src="/works/top_bk.jpg" lazy-src="/works/sm_top_bk.jpg" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -14,97 +14,63 @@
         </v-flex>
       </v-layout>
     </section>
-    <section>
+    <section ref="workTabs">
       <v-tabs
         slot="extension"
-        v-model="tabs"
+        v-model="activeTab"
         fixed-tabs
         color="transparent"
         icons-and-text
         class="nv-works-tabs py-4"
       >
-        <v-tabs-slider color="black"></v-tabs-slider>
-        <v-tab href="#image">IMAGE</v-tab>
-        <!-- <v-tab href="#photo">PHOTO</v-tab> -->
-        <v-tab href="#video">VIDEO</v-tab>
+        <v-tab href="#photo" @click="changeTabs('photo')">PHOTO</v-tab>
+        <v-tab href="#album" @click="changeTabs('album')">ALBUM</v-tab>
+        <v-tab href="#video" @click="changeTabs('video')">VIDEO</v-tab>
       </v-tabs>
     </section>
-    <v-layout
-      column
-      wrap
-      align-center
-    >
-      <v-flex xs12 style="width: 1200px;">
-        <v-container grid-list-xl v-show="tabs === 'image'">
-          <works-image></works-image>
-        </v-container>
-        <!-- <v-container grid-list-xl v-show="tabs === 'photo'">
-          <works-image></works-image>
-        </v-container> -->
-        <v-container grid-list-xl v-show="tabs === 'video'">
-          <v-layout row wrap align-start>
-            <v-flex
-              v-for="(item, index) in videos" :key="index"
-              xs12 md4 px-4 py-5 class="nv-works-item">
-              <v-card class="elevation-0 transparent">
-                <iframe :src="item.src" style="width: 100%; height: 190px;" allowfullscreen></iframe>
-              </v-card>
-              <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
-            </v-flex>
-            <!-- <v-flex
-              v-for="(item, index) in videos" :key="index"
-              xs12 md4 px-4 py-5 class="nv-works-item">
-              <v-card class="elevation-0 transparent">
-                <video :src="item.distPath" controls style="width: 344px;">
-                  您的浏览器不支持 video 标签。
-                </video>
-                <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
-              </v-card>
-            </v-flex> -->
-          </v-layout>
-        </v-container>
-      </v-flex>
-      <!-- <v-flex class="mt-2 mb-5" style="width: 1200px; text">
-        <div class="text-xs-center">
-          <v-pagination
-            v-model="page"
-            :length="4"
-          ></v-pagination>
-        </div>
-      </v-flex> -->
-    </v-layout>
+    <works-photo v-show="activeTab === 'photo'"></works-photo>
+    <works-album v-show="activeTab === 'album'"></works-album>
+    <works-video v-show="activeTab === 'video'"></works-video>
   </div>
 </template>
 
 <script>
-import axios from '@/tools/axios'
-import WorksImage from '@/components/works-image'
+import WorksPhoto from '@/components/works-photo'
+import WorksAlbum from '@/components/works-album'
+import WorksVideo from '@/components/works-video'
+import { getOffset, scroll } from '@/tools/utils'
 
 export default {
-  components: { WorksImage },
+  components: { WorksPhoto, WorksVideo, WorksAlbum },
   data () {
     return {
       topbkSrc: '/works/sm_top_bk.jpg',
-      tabs: 'image',
-      page: 1,
-      videos: []
+      activeTab: 'photo',
+      page: 1
+    }
+  },
+  computed: {
+    routePath () {
+      return this.$route.path
     }
   },
   methods: {
-    loadTopbk () {
-      const img = new Image()
-      const src = '/works/top_bk.jpg'
-      img.onload = () => {
-        img.onload = null
-        this.topbkSrc = src
-      }
-      img.src = src
+    changeTabs (type) {
+      this.$router.push({ name: `works-${type}` })
+      const offset = getOffset(this.$refs.workTabs)
+      scroll(document.documentElement, offset.top)
     }
   },
-  async mounted () {
-    this.videos = await axios.get('/gateway/fetchWorkVideo')
-
-    this.loadTopbk()
+  created () {
+    if (this.routePath.includes('/photo')) {
+      this.activeTab = 'photo'
+    }
+    if (this.routePath.includes('/video')) {
+      this.activeTab = 'video'
+    }
+    if (this.routePath.includes('/album')) {
+      this.activeTab = 'album'
+    }
   }
 }
 </script>

@@ -20,27 +20,28 @@
     </v-content>
 
     <v-footer height="auto" color="grey darken-4">
-      <v-layout justify-center row wrap pt-4>
-        <v-btn
-          v-for="(item, index) in menus"
-          :key="index"
-          color="white"
-          flat
-          round
-          @click="$router.push(item.router)"
-        >
-          {{ item.name }}
-        </v-btn>
+      <v-layout justify-center row wrap py-5>
+        <div class="mb-3">
+          <v-btn
+            v-for="(item, index) in menus"
+            :key="index"
+            color="white"
+            flat
+            round
+            @click="$router.push(item.router)"
+          >
+            {{ item.name }}
+          </v-btn>
+        </div>
         <v-flex
           grey
           darken-4
           pt-5
-          pb-4
           text-xs-center
           white--text
           xs12
         >
-          &copy;2018 — <strong>NEWVIEW</strong>
+          &copy;2019 — <strong>NEWVIEW</strong>
         </v-flex>
       </v-layout>
     </v-footer>
@@ -84,20 +85,19 @@ export default {
   watch: {
     routePath (newVal) {
       for (let item of this.menus) {
-        if (newVal === item.router) this.activedMenu = item.name
+        if (newVal.includes(item.router)) this.activedMenu = item.name
       }
     }
   },
   methods: {
     handleClickMenu (item) {
-      console.log(this.$route)
       this.activedMenu = item.name
       this.$router.push(item.router)
     }
   },
   mounted () {
     for (let item of this.menus) {
-      if (location.pathname === item.router) this.activedMenu = item.name
+      if (location.pathname.includes(item.router)) this.activedMenu = item.name
     }
   }
 }

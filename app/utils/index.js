@@ -4,9 +4,6 @@ const fs = require('fs')
 const path = require('path')
 const nodemailer = require('nodemailer')
 
-// 设置Node环境变量
-require('dotenv').config()
-
 module.exports = {
   /**
    * @desc 以递归的形式，读取文件夹下的 js 文件，并 require

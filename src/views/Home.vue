@@ -21,7 +21,7 @@
             <v-layout row wrap align-start>
               <v-flex
                 v-for="(item, index) in images" :key="index"
-                xs12 md4 px-4 py-5 class="nv-works-item">
+                xs12 md4 px-4 py-4 class="nv-works-item">
                 <v-card class="elevation-0 transparent">
                   <v-img :src="item.distPath" height="194px"></v-img>
                   <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
@@ -187,8 +187,8 @@ export default {
     }
   },
   async mounted () {
-    this.carousels = await axios.get('/gateway/fetchCarousel')
-    this.images = (await axios.get('/gateway/fetchWorkImage')).slice(0, 6)
+    this.carousels = (await axios.get('/gateway/fetchCarousel', { params: { pageSize: 99 } })).data
+    this.images = (await axios.get('/gateway/fetchWorkImage', { params: { pageSize: 6 } })).data
     this.loadImages(this.carousels)
     this.loadImages(this.images)
   }

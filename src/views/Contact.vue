@@ -3,7 +3,7 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img :src="topbkSrc" width="100%" height="480px"></v-img>
+          <v-img src="/contact/top_bk.jpg" lazy-src="/contact/sm_top_bk.jpg" width="100%" height="480px"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -175,19 +175,7 @@ export default {
           this.messageSendSuccess = false
         }, 3000)
       }
-    },
-    loadTopbk () {
-      const img = new Image()
-      const src = '/contact/top_bk.jpg'
-      img.onload = () => {
-        img.onload = null
-        this.topbkSrc = src
-      }
-      img.src = src
     }
-  },
-  mounted () {
-    this.loadTopbk()
   }
 }
 </script>

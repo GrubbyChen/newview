@@ -18,13 +18,28 @@ export default new Router({
       component: () => import('./views/Works.vue')
     },
     {
+      path: '/nvworks/photo',
+      name: 'works-photo',
+      component: () => import('./views/Works.vue')
+    },
+    {
+      path: '/nvworks/album',
+      name: 'works-album',
+      component: () => import('./views/Works.vue')
+    },
+    {
+      path: '/nvworks/video',
+      name: 'works-video',
+      component: () => import('./views/Works.vue')
+    },
+    {
       path: '/nvcompany',
-      name: 'about',
+      name: 'company',
       component: () => import('./views/Company.vue')
     },
     {
       path: '/nvcontact',
-      name: 'about',
+      name: 'contact',
       component: () => import('./views/Contact.vue')
     }
   ]
