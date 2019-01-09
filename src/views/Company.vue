@@ -19,8 +19,8 @@
         <v-flex mt-3 mb-5 px-4 style="width: 980px;">
           <h2 class="headline-secondary">企業理念</h2>
           <v-layout row wrap pt-3>
-            <v-flex md12 class="pl-4 nv-message">
-              <section>
+            <v-flex md12 class="pl-3 nv-message">
+              <section style="font-size: 16px;">
                 <p>言葉にできない「想い」や「センス」を、ハイクオリティで多技に通じた技術で「形」にします。</p>
                 <p>生命感みなぎる視点で、次世代を見据えた表現を提供します。</p>
                 <p>ありふれたモノ・コトを、新しい着眼点によるインスピレーションで、積極的にイノベーションします。</p>
