@@ -21,18 +21,27 @@
             <v-layout row wrap align-start>
               <v-flex
                 v-for="(item, index) in images"
-                :key="index"
+                :key="`photo-${index}`"
                 xs12 md4 px-4 py-4
                 class="nv-works-item photo"
               >
                 <v-card class="elevation-0 transparent">
-                  <v-img :src="item.distPath" height="194px"></v-img>
+                  <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
                   <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
                 </v-card>
               </v-flex>
+
+              <v-dialog
+                v-model="dialog"
+                scrollable
+                content-class="image-pre-dialog"
+              >
+                <v-img :src="previewSrc" contain @click="dialog = false"></v-img>
+              </v-dialog>
+
               <v-flex
                 v-for="(item, index) in videos"
-                :key="index"
+                :key="`video-${index}`"
                 xs12 md4 px-4 py-4
                 class="nv-works-item"
               >
@@ -186,7 +195,9 @@ export default {
     return {
       carousels: [],
       images: [],
-      videos: []
+      videos: [],
+      dialog: false,
+      previewSrc: ''
     }
   },
   methods: {
@@ -199,6 +210,10 @@ export default {
         }
         img.src = item.distPath
       }
+    },
+    previewImage (distPath) {
+      this.previewSrc = distPath
+      this.dialog = true
     }
   },
   async mounted () {
