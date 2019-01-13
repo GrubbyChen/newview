@@ -141,49 +141,42 @@
     </section>
 
     <section>
-      <v-container grid-list-xl>
-        <v-layout column wrap align-center>
-          <v-flex xs12 sm4>
-            <v-card class="elevation-0 transparent">
-              <v-card-title primary-title class="layout justify-center">
-                <div class="nv-title mt-3">CONTACT</div>
-              </v-card-title>
-              <!-- <v-card-text>
-                Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-              </v-card-text> -->
-              <v-list class="transparent mt-4">
-                <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon>location_on</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>〒166-0002東京都杉並区高円寺北1-21-5 4F-1</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <!-- <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon>phone</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>0755-86518755 / 86518753</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile> -->
-                <v-list-tile>
-                  <v-list-tile-action>
-                    <v-icon>email</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title>info@newview.co.jp</v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-              </v-list>
-            </v-card>
-          </v-flex>
-          <v-flex xs12 sm4 class="mt-5 mb-4">
-            <a class="nv-page-button" @click="$router.push('/nvcontact')">もっと詳しくみる</a>
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <v-layout column wrap align-center>
+        <v-flex xs12 sm4 class="mt-5 mb-4">
+          <div class="nv-title mt-3">CONTACT</div>
+        </v-flex>
+        <v-flex xs12 sm4>
+          <v-list class="transparent mt-4">
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-icon>location_on</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>〒166-0002東京都杉並区高円寺北1-21-5 4F-1</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <!-- <v-list-tile>
+              <v-list-tile-action>
+                <v-icon>phone</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>0755-86518755 / 86518753</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile> -->
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-icon>email</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>info@newview.co.jp</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-flex>
+        <v-flex xs12 sm4 class="mt-5 mb-4">
+          <a class="nv-page-button" @click="$router.push('/nvcontact')">もっと詳しくみる</a>
+        </v-flex>
+      </v-layout>
     </section>
   </div>
 </template>
