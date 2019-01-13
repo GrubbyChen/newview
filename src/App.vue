@@ -1,9 +1,12 @@
 <template>
   <v-app :class="[`nv-app-${activedMenu}`]" style="background-color: #fff;">
     <v-toolbar height="80px">
-      <v-toolbar-title class="headline text-uppercase">
+      <div class="nv-logo">
+        <img src="home/logo.png"/>
+      </div>
+      <!-- <v-toolbar-title class="headline text-uppercase">
         <span>new view 株式会社ホームページ</span>
-      </v-toolbar-title>
+      </v-toolbar-title> -->
       <v-spacer></v-spacer>
       <ul class="nv-menus">
         <li
