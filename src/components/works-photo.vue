@@ -6,10 +6,8 @@
       xs12 md4 px-4 py-4
       class="nv-works-item photo"
     >
-      <v-card class="elevation-0 transparent">
-        <v-img :src="item.distPath" :lazy-src="item.smDistPath" height="194px" @click="previewImage(item.distPath)"></v-img>
-        <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
-      </v-card>
+      <v-img :src="item.distPath" :lazy-src="item.smDistPath" height="194px" @click="previewImage(item.distPath)"></v-img>
+      <div class="nv-works-item-title">{{ item.title }}</div>
     </v-flex>
 
     <v-flex xs12 mb-4 v-show="totalPage > 1">

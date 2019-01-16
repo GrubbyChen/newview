@@ -1,7 +1,20 @@
 .nv-logo {
+  position: relative;
+  height: 50px;
   margin-top: 12px;
   img {
-    height: 50px;
+    width: 240px;
+    height: 24px;
+  }
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
   }
 }
 
@@ -206,7 +219,8 @@
   .v-image__image {
     transition: transform 0.5s;
   }
-  .v-card__title {
+  .nv-works-item-title {
+    padding: 16px 0;
     font-size: 16px;
     font-weight: bold;
   }
@@ -256,4 +270,12 @@
       border: 4px solid #fff;
     }
   }
+}
+
+.nv-contact-icon {
+  padding: 16px;
+}
+
+.nv-contact-text {
+  padding: 24px 16px 16px 16px;
 }

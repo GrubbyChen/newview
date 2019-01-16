@@ -3,6 +3,7 @@
     <v-toolbar height="80px">
       <div class="nv-logo">
         <img src="home/logo.png"/>
+        <span>NEW VIEW 株式会社</span>
       </div>
       <!-- <v-toolbar-title class="headline text-uppercase">
         <span>new view 株式会社ホームページ</span>

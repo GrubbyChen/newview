@@ -25,10 +25,8 @@
                 xs12 md4 px-4 py-4
                 class="nv-works-item photo"
               >
-                <v-card class="elevation-0 transparent">
-                  <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
-                  <v-card-title primary-title class="px-0">{{ item.title }}</v-card-title>
-                </v-card>
+                <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
+                <div class="nv-works-item-title">{{ item.title }}</div>
               </v-flex>
 
               <v-dialog
@@ -45,10 +43,8 @@
                 xs12 md4 px-4 py-4
                 class="nv-works-item"
               >
-                <v-card class="elevation-0 transparent">
-                  <iframe :src="item.src" style="width: 100%; height: 190px;" allowfullscreen></iframe>
-                </v-card>
-                <v-card-title primary-title class="px-0 pt-3">{{ item.title }}</v-card-title>
+                <iframe :src="item.src" style="width: 100%; height: 190px;" allowfullscreen></iframe>
+                <div class="nv-works-item-title">{{ item.title }}</div>
               </v-flex>
             </v-layout>
           </v-container>

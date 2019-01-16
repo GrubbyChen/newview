@@ -16,34 +16,28 @@
           <v-container grid-list-xl>
             <v-layout row wrap align-start>
               <v-flex xs12 md6>
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon x-large style="color: #444;">location_on</v-icon>
-                  </v-card-text>
-                  <v-card-title primary-title class="layout justify-center">
-                    <div class="text-xs-center" style="font-size: 16px;">〒166-0002東京都杉並区高円寺北1-21-5 4F-1</div>
-                  </v-card-title>
-                </v-card>
+                <div class="text-xs-center nv-contact-icon">
+                  <v-icon x-large style="color: #444;">location_on</v-icon>
+                </div>
+                <div class="layout justify-center nv-contact-text">
+                  <div class="text-xs-center" style="font-size: 16px;">〒166-0002東京都杉並区高円寺北1-21-5 4F-1</div>
+                </div>
               </v-flex>
               <!-- <v-flex xs12 md4>
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon x-large style="color: #444;">phone</v-icon>
-                  </v-card-text>
-                  <v-card-title primary-title class="layout justify-center">
-                    <div class="text-xs-center" style="font-size: 16px;">0755-86518755 / 86518753</div>
-                  </v-card-title>
-                </v-card>
+                <div class="text-xs-center nv-contact-icon">
+                  <v-icon x-large style="color: #444;">phone</v-icon>
+                </div>
+                <div primary-title class="layout justify-center nv-contact-text">
+                  <div class="text-xs-center" style="font-size: 16px;">0755-86518755 / 86518753</div>
+                </div>
               </v-flex> -->
               <v-flex xs12 md6>
-                <v-card class="elevation-0 transparent">
-                  <v-card-text class="text-xs-center">
-                    <v-icon x-large style="color: #444;">email</v-icon>
-                  </v-card-text>
-                  <v-card-title primary-title class="layout justify-center">
-                    <div class="text-xs-center" style="font-size: 16px;">info@newview.co.jp</div>
-                  </v-card-title>
-                </v-card>
+                <div class="text-xs-center nv-contact-icon">
+                  <v-icon x-large style="color: #444;">email</v-icon>
+                </div>
+                <div primary-title class="layout justify-center nv-contact-text">
+                  <div class="text-xs-center" style="font-size: 16px;">info@newview.co.jp</div>
+                </div>
               </v-flex>
             </v-layout>
           </v-container>
