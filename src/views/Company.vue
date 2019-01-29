@@ -62,6 +62,18 @@
         </v-flex>
       </v-layout>
     </section>
+    <section class="area-common--deco-02">
+      <v-layout column wrap align-center>
+        <v-flex mt-3 mb-5 class="px-4 nv-message" style="width: 980px;">
+          <h2 class="headline-secondary">人材募集</h2>
+          <p class="nv-message-introduce" style="font-weight: bolder;">ディレクター募集</p>
+          <p class="nv-message-introduce mt-3" style="font-weight: bolder;">ビデオカメラマン募集</p>
+          <p class="nv-message-introduce mt-3" style="font-weight: bolder;">グラフィックデザイナー募集</p>
+          <p class="nv-message-introduce">MAIL : &nbsp;info@newview.co.jp</p>
+          <p class="nv-message-introduce mt-3">担当 : &nbsp;コウ</p>
+        </v-flex>
+      </v-layout>
+    </section>
   </div>
 </template>
 
