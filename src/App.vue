@@ -34,6 +34,7 @@
       right
       temporary
       disable-resize-watcher
+      style="width: 180px;"
     >
       <v-list>
         <v-list-tile
