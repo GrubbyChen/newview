@@ -44,7 +44,7 @@
           </v-container>
         </v-flex>
         <v-flex class="mb-4" style="width: 1200px;">
-          <v-form v-model="valid" ref="form" class="px-5" :class="{ 'concat-form-sm': smAndDown }">
+          <v-form v-model="valid" ref="form" class="px-4" :class="{ 'concat-form-sm': smAndDown }">
             <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
               <v-flex md3>
                 <v-subheader align-end>お名前<span class="required">(必須)</span></v-subheader>
