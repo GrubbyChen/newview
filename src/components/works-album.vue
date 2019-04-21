@@ -1,9 +1,9 @@
 <template>
-  <v-layout row wrap align-start style="width: 1200px; margin: auto;">
+  <v-layout row wrap align-start style="max-width: 1200px; margin: auto;">
     <v-flex
       v-for="(item, index) in albums"
       :key="index"
-      xs12 md4 px-4 py-4
+      xs12 sm6 md4 px-4 py-4
       class="nv-works-item album"
     >
         <div class="album">
@@ -14,7 +14,7 @@
         <div class="nv-works-item-title">{{ item.title }}</div>
     </v-flex>
 
-    <v-flex xs12 mb-4 v-show="totalPage > 1">
+    <v-flex xs12 sm6 mb4 v-show="totalPage > 1">
       <div class="text-xs-center">
         <v-pagination
           v-model="page"

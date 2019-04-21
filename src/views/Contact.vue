@@ -3,7 +3,8 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="/contact/top_bk.jpg" lazy-src="/contact/sm_top_bk.jpg" width="100%" height="480px"></v-img>
+          <v-img src="/contact/top_bk.jpg" lazy-src="/contact/sm_top_bk.jpg" width="100%" height="480px" class="hidden-sm-and-down"></v-img>
+          <v-img src="/contact/top_bk.jpg" lazy-src="/contact/sm_top_bk.jpg" width="100%" height="300px" class="hidden-md-and-up"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -43,12 +44,12 @@
           </v-container>
         </v-flex>
         <v-flex class="mb-4" style="width: 1200px;">
-          <v-form v-model="valid" ref="form" class="px-5">
-            <v-layout row mt-4>
-              <v-flex xs3>
+          <v-form v-model="valid" ref="form" class="px-5" :class="{ 'concat-form-sm': smAndDown }">
+            <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
+              <v-flex md3>
                 <v-subheader align-end>お名前<span class="required">(必須)</span></v-subheader>
               </v-flex>
-              <v-flex xs9>
+              <v-flex md9>
                 <v-text-field
                   v-model="form.name"
                   :rules="nameRules"
@@ -57,7 +58,7 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout row mt-4>
+            <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
               <v-flex xs3>
                 <v-subheader>メールアドレス<span class="required">(必須)</span></v-subheader>
               </v-flex>
@@ -70,7 +71,7 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout row mt-4>
+            <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
               <v-flex xs3>
                 <v-subheader>御社名<span class="required">(必須)</span></v-subheader>
               </v-flex>
@@ -83,7 +84,7 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout row mt-4>
+            <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
               <v-flex xs3>
                 <v-subheader>電話番号<span class="required">(必須)</span></v-subheader>
               </v-flex>
@@ -96,7 +97,7 @@
                 ></v-text-field>
               </v-flex>
             </v-layout>
-            <v-layout row mt-4>
+            <v-layout :row="!smAndDown" :column="smAndDown" mt-4>
               <v-flex xs3>
                 <v-subheader>お間い合わせ内容<span class="required">(必須)</span></v-subheader>
               </v-flex>
@@ -158,6 +159,11 @@ export default {
         v => !!v || 'Message is required',
         v => v.length <= 128 || 'Name must be less than 128 characters'
       ]
+    }
+  },
+  computed: {
+    smAndDown() {
+      return this.$vuetify.breakpoint.smAndDown;
     }
   },
   methods: {

@@ -1,12 +1,14 @@
 <template>
   <div class="nv-home">
-    <v-carousel height="800px" hide-controls style="background: #ccc;">
+    <v-parallax src="/home/top_bk.jpg" height="660" class="hidden-sm-and-down"></v-parallax>
+    <v-parallax src="/home/top_bk.jpg" height="380" class="hidden-md-and-up"></v-parallax>
+    <!-- <v-carousel height="800px" hide-controls style="background: #ccc;">
       <v-carousel-item
         v-for="(item, index) in carousels"
         :key="index"
         :src="item.smDistPath"
       ></v-carousel-item>
-    </v-carousel>
+    </v-carousel> -->
     <section class="nv-home-works my-5">
       <v-layout
         column
@@ -49,7 +51,7 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex xs12 sm4 class="mt-5 mb-4">
+        <v-flex xs12 sm4 class="mt-5 mb-4 px-4" style="width: 100%;">
           <a class="nv-page-button" @click="$router.push('/nvworks')">もっと詳しくみる</a>
         </v-flex>
       </v-layout>
@@ -130,10 +132,8 @@
     </section> -->
 
     <section>
-      <v-parallax src="/home/02.jpg" height="400">
-        <v-layout column align-center justify-center>
-        </v-layout>
-      </v-parallax>
+      <v-parallax src="/home/02.jpg" height="400" class="hidden-sm-and-down"></v-parallax>
+      <v-parallax src="/home/02.jpg" height="280" class="hidden-md-and-up"></v-parallax>
     </section>
 
     <section>
@@ -169,7 +169,7 @@
             </v-list-tile>
           </v-list>
         </v-flex>
-        <v-flex xs12 sm4 class="mt-5 mb-4">
+        <v-flex xs12 sm4 class="mt-5 mb-4 px-4" style="width: 100%;">
           <a class="nv-page-button" @click="$router.push('/nvcontact')">もっと詳しくみる</a>
         </v-flex>
       </v-layout>

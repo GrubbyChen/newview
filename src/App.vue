@@ -1,7 +1,11 @@
 <template>
   <v-app :class="[`nv-app-${activedMenu}`]" style="background-color: #fff;">
     <v-toolbar height="80px">
-      <div class="nv-logo">
+      <div class="nv-logo hidden-sm-and-down">
+        <img src="home/logo.png"/>
+        <span>NEW VIEW 株式会社</span>
+      </div>
+      <div class="nv-logo nv-logo-sm hidden-md-and-up">
         <img src="home/logo.png"/>
         <span>NEW VIEW 株式会社</span>
       </div>
@@ -9,7 +13,7 @@
         <span>new view 株式会社ホームページ</span>
       </v-toolbar-title> -->
       <v-spacer></v-spacer>
-      <ul class="nv-menus">
+      <ul class="nv-menus hidden-sm-and-down">
         <li
           v-for="(item, index) in menus"
           :key="index"
@@ -17,7 +21,30 @@
           <a :class="{ 'active': activedMenu === item.name }" @click="handleClickMenu(item)">{{ item.name }}</a>
         </li>
       </ul>
+      <v-toolbar-side-icon
+        class="hidden-md-and-up"
+        @click="handleDrawer"
+      />
     </v-toolbar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      dark
+      right
+      temporary
+      disable-resize-watcher
+    >
+      <v-list>
+        <v-list-tile
+          v-for="(link, i) in menus"
+          :key="i"
+          :href="link.router"
+        >
+          <v-list-tile-title v-text="link.name" />
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-content>
       <router-view></router-view>
@@ -78,7 +105,8 @@ export default {
         name: 'CONTACT',
         router: '/nvcontact'
       }],
-      activedMenu: 'home'
+      activedMenu: 'home',
+      drawer: false
     }
   },
   computed: {
@@ -97,6 +125,9 @@ export default {
     handleClickMenu (item) {
       this.activedMenu = item.name
       this.$router.push(item.router)
+    },
+    handleDrawer () {
+      this.drawer = !this.drawer
     }
   },
   mounted () {

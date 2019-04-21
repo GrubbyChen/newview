@@ -1,9 +1,10 @@
 <template>
-  <div class="nv-aboutus">
+  <div class="nv-aboutus" :class="{ 'nv-aboutus-sm': smOnly, 'nv-aboutus-xs': xsOnly }">
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="/company/top_bk.jpg" lazy-src="/company/sm_top_bk.jpg" width="100%" height="480px"></v-img>
+          <v-img src="/company/top_bk.jpg" lazy-src="/company/sm_top_bk.jpg" width="100%" height="480px" class="hidden-sm-and-down"></v-img>
+          <v-img src="/company/top_bk.jpg" lazy-src="/company/sm_top_bk.jpg" width="100%" height="300px" class="hidden-md-and-up"></v-img>
         </v-flex>
       </v-layout>
     </section>
@@ -82,6 +83,14 @@
 export default {
   data () {
     return {
+    }
+  },
+  computed: {
+    smOnly() {
+      return this.$vuetify.breakpoint.smOnly;
+    },
+    xsOnly() {
+      return this.$vuetify.breakpoint.xsOnly;
     }
   },
   methods: {

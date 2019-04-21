@@ -3,7 +3,8 @@
     <section>
       <v-layout column wrap align-center>
         <v-flex style="width: 100%;">
-          <v-img src="/works/top_bk.jpg" lazy-src="/works/sm_top_bk.jpg" width="100%" height="480px"></v-img>
+          <v-img src="/works/top_bk.jpg" lazy-src="/works/sm_top_bk.jpg" width="100%" height="480px" class="hidden-sm-and-down"></v-img>
+          <v-img src="/works/top_bk.jpg" lazy-src="/works/sm_top_bk.jpg" width="100%" height="300px" class="hidden-md-and-up"></v-img>
         </v-flex>
       </v-layout>
     </section>
