@@ -22,7 +22,7 @@
         fixed-tabs
         color="transparent"
         icons-and-text
-        class="nv-works-tabs py-4"
+        class="nv-works-tabs px-4 py-4"
       >
         <v-tab href="#photo" @click="changeTabs('photo')">PHOTO</v-tab>
         <v-tab href="#album" @click="changeTabs('album')">ALBUM</v-tab>

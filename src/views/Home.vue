@@ -18,38 +18,36 @@
         <v-flex xs12 sm4 class="mt-5 mb-4">
           <div class="nv-title">WORKS</div>
         </v-flex>
-        <v-flex xs12 style="max-width: 1200px;">
-          <v-container grid-list-xl>
-            <v-layout row wrap align-start>
-              <v-flex
-                v-for="(item, index) in images"
-                :key="`photo-${index}`"
-                xs12 sm6 mb4 px-4 py-4
-                class="nv-works-item photo"
-              >
-                <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
-                <div class="nv-works-item-title">{{ item.title }}</div>
-              </v-flex>
+        <v-flex xs12 style="width: 1200px;">
+          <v-layout row wrap align-start>
+            <v-flex
+              v-for="(item, index) in images"
+              :key="`photo-${index}`"
+              xs12 sm6 md4 px-4 py-4
+              class="nv-works-item photo"
+            >
+              <v-img :src="item.distPath" height="194px" @click="previewImage(item.distPath)"></v-img>
+              <div class="nv-works-item-title">{{ item.title }}</div>
+            </v-flex>
 
-              <v-dialog
-                v-model="dialog"
-                scrollable
-                content-class="image-pre-dialog"
-              >
-                <v-img :src="previewSrc" contain @click="dialog = false"></v-img>
-              </v-dialog>
+            <v-dialog
+              v-model="dialog"
+              scrollable
+              content-class="image-pre-dialog"
+            >
+              <v-img :src="previewSrc" contain @click="dialog = false"></v-img>
+            </v-dialog>
 
-              <v-flex
-                v-for="(item, index) in videos"
-                :key="`video-${index}`"
-                xs12 sm6 mb4 px-4 py-4
-                class="nv-works-item"
-              >
-                <iframe :src="item.src" style="width: 100%; height: 190px;" allowfullscreen></iframe>
-                <div class="nv-works-item-title">{{ item.title }}</div>
-              </v-flex>
-            </v-layout>
-          </v-container>
+            <v-flex
+              v-for="(item, index) in videos"
+              :key="`video-${index}`"
+              xs12 sm6 md4 px-4 py-4
+              class="nv-works-item"
+            >
+              <iframe :src="item.src" style="width: 100%; height: 190px;" allowfullscreen></iframe>
+              <div class="nv-works-item-title">{{ item.title }}</div>
+            </v-flex>
+          </v-layout>
         </v-flex>
         <v-flex xs12 sm4 class="mt-5 mb-4 px-4" style="width: 100%;">
           <a class="nv-page-button" @click="$router.push('/nvworks')">もっと詳しくみる</a>
