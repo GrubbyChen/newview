@@ -14,7 +14,7 @@
         <div class="nv-works-item-title">{{ item.title }}</div>
     </v-flex>
 
-    <v-flex xs12 sm6 mb4 v-show="totalPage > 1">
+    <v-flex xs12 sm12 md12 v-show="totalPage > 1">
       <div class="text-xs-center">
         <v-pagination
           v-model="page"

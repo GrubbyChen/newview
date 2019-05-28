@@ -29,9 +29,9 @@
         <v-tab href="#video" @click="changeTabs('video')">VIDEO</v-tab>
       </v-tabs>
     </section>
-    <works-photo v-show="activeTab === 'photo'"></works-photo>
-    <works-album v-show="activeTab === 'album'"></works-album>
-    <works-video v-show="activeTab === 'video'"></works-video>
+    <works-photo v-if="activeTab === 'photo'"></works-photo>
+    <works-album v-if="activeTab === 'album'"></works-album>
+    <works-video v-if="activeTab === 'video'"></works-video>
   </div>
 </template>
 
