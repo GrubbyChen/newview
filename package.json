@@ -35,7 +35,7 @@
     "koa-static": "^5.0.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
-    "mongoose": "^5.4.0",
+    "mongoose": "^5.7.5",
     "nodemailer": "^4.7.0",
     "qs": "^6.6.0",
     "stylus": "^0.54.5",
