@@ -73,7 +73,7 @@
           white--text
           xs12
         >
-          &copy;2019 — <strong>NEWVIEW</strong>
+          &copy;2023 — <strong>NEWVIEW</strong>
         </v-flex>
       </v-layout>
     </v-footer>
